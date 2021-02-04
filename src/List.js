@@ -1,10 +1,14 @@
 import Card from './Card'
 import './List.css'
+import store from './store'
 
 
 function List(props){
-    const CARDS = props.cards.map(card =>{
-        return <Card title={card.title} content={card.content} key={card.id}></Card>
+    let cards = props.cardIds.map((cardId, i) => {
+        return store.allCards[cardId];
+    })
+    cards = cards.map(card =>{
+        return <Card title={card.title} content={card.content} key={card.id} id ={card.id} delete={(key) => props.delete(key)} addRandom = {props.addRandom}></Card>
     })
     return(
         <section className='List'>
@@ -12,10 +16,11 @@ function List(props){
                 <h2>{props.header}</h2>
             </header>
             <div className='List-cards'>
-                {CARDS}
+                {cards}
                 <button
                     type='button'
-                    className='List-add-button'>
+                    className='List-add-button'
+                    onClick= {e => props.addRandom(props.id)}>
                     + Add Random Card
                 </button>
             </div>

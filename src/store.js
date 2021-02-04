@@ -1,26 +1,4 @@
 const STORE = {
-    lists: [
-      {
-        id: '1',
-        header: 'First list',
-        cardIds: [ 'a', 'b', 'e', 'f', 'g', 'j', 'l', 'm' ],
-      },
-      {
-        id: '2',
-        header: 'Second list',
-        cardIds: ['b', 'c', 'd', 'f', 'h', 'i', 'k'],
-      },
-      {
-        id: '3',
-        header: 'Third list',
-        cardIds: [ 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm' ],
-      },
-      {
-        id: '4',
-        header: 'Fourth list',
-        cardIds: [ 'l', 'm' ],
-      },
-    ],
     allCards: {
       'a': { id: 'a', title: 'First card', content: 'lorem ipsum' },
       'b': { id: 'b', title: 'Second card', content: 'lorem ipsum' },
@@ -36,6 +14,9 @@ const STORE = {
       'l': { id: 'l', title: 'Twelfth card', content: 'lorem ipsum' },
       'm': { id: 'm', title: 'Thirteenth card', content: 'lorem ipsum' },
     },
+    addCard: (id, title, content) => {
+      STORE.allCards[id] = {id: id, title: title, content: content};
+    }
   }
 
   export default STORE;
